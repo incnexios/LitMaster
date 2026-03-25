@@ -30,7 +30,7 @@ Provide a JSON response with:
 - improvements: 2-3 specific suggestions for improvement.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.1-pro-preview",
+        model: "gemini-3-flash-preview",
         contents: `Topic: ${topic}\n\nEssay:\n${essay}`,
         config: {
           systemInstruction,

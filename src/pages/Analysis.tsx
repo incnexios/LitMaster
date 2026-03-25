@@ -50,7 +50,7 @@ Your goal is to help them understand texts like "The Vendor of Sweets", poems, s
 Keep your answers simple, exam-focused, and engaging. Use formatting like bullet points and bold text to make it easy to read.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.1-pro-preview",
+        model: "gemini-3-flash-preview",
         contents: prompt,
         config: {
           systemInstruction,

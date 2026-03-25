@@ -139,7 +139,7 @@ If generating "Comprehensive Lesson", provide a detailed, classroom-style explan
       }
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.1-pro-preview",
+        model: "gemini-3-flash-preview",
         contents: { parts },
         config: {
           systemInstruction,

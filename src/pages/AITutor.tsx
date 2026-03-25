@@ -110,7 +110,7 @@ If they ask for an essay, provide a well-structured model essay that would score
       parts.push({ text: userMsg || "Please analyze the attached files." });
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.1-pro-preview",
+        model: "gemini-3-flash-preview",
         contents: { parts },
         config: {
           systemInstruction,
