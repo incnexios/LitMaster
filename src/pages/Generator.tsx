@@ -171,9 +171,12 @@ If generating "Comprehensive Lesson", provide a detailed, classroom-style explan
         setGeneratorState({ result: responseText });
       }
       
-    } catch (error) {
+    } catch (error: any) {
       console.error('Generation error:', error);
-      setGeneratorState({ result: 'Sorry, an error occurred while generating the materials. Please try again.' });
+      const errorMsg = error.message === "API key is missing" 
+        ? "Please add your Gemini API Key to Vercel Environment Variables (VITE_GEMINI_API_KEY) and redeploy."
+        : 'Sorry, an error occurred while generating the materials. Please try again.';
+      setGeneratorState({ result: errorMsg });
     } finally {
       setIsGenerating(false);
     }

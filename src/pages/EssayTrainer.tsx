@@ -56,8 +56,13 @@ Provide a JSON response with:
       if (data.score) {
         addXp(data.score * 5); // Reward based on score
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error grading essay:', error);
+      if (error.message === "API key is missing") {
+        alert("Please add your Gemini API Key to Vercel Environment Variables (VITE_GEMINI_API_KEY) and redeploy.");
+      } else {
+        alert("Sorry, an error occurred while grading the essay. Please try again.");
+      }
     } finally {
       setIsGrading(false);
     }

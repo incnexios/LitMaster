@@ -118,9 +118,12 @@ If they ask for an essay, provide a well-structured model essay that would score
       });
       
       setMessages(prev => [...prev, { role: 'assistant', content: response.text || '' }]);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Chat error:', error);
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I encountered an error. Please try again.' }]);
+      const errorMsg = error.message === "API key is missing" 
+        ? "Please add your Gemini API Key to Vercel Environment Variables (VITE_GEMINI_API_KEY) and redeploy."
+        : 'Sorry, I encountered an error. Please try again.';
+      setMessages(prev => [...prev, { role: 'assistant', content: errorMsg }]);
     } finally {
       setIsLoading(false);
     }

@@ -58,9 +58,12 @@ Keep your answers simple, exam-focused, and engaging. Use formatting like bullet
       });
       
       setAnalysis(response.text || '');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Analysis error:', error);
-      setAnalysis('Sorry, an error occurred while generating the analysis. Please try again.');
+      const errorMsg = error.message === "API key is missing" 
+        ? "Please add your Gemini API Key to Vercel Environment Variables (VITE_GEMINI_API_KEY) and redeploy."
+        : 'Sorry, an error occurred while generating the analysis. Please try again.';
+      setAnalysis(errorMsg);
     } finally {
       setIsLoading(false);
     }
